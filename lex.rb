@@ -9,6 +9,15 @@ class Lex
 
   private
 
+  def num_parse
+    num_token = ""
+    while (@code[@idx] =~ /\d/)
+      num_token += @code[@idx]
+      @idx += 1
+    end
+    num_token
+  end
+
   def parse
     while (@idx < @code.length)
       case @code[@idx]
@@ -31,13 +40,7 @@ class Lex
         @tokens << ")"
         @idx += 1
       when /\d/ then
-        num_token = @code[@idx].dup
-        @idx += 1
-        while (@idx < @code.length and @code[@idx] =~ /\d/)
-          num_token += @code[@idx]
-          @idx += 1
-        end
-        @tokens << num_token
+        @tokens << num_parse
       when /\s/ then
         @idx += 1
       else
