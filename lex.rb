@@ -14,6 +14,10 @@ class Lex
     @tokens.shift
   end
 
+  def peak_token
+    @tokens.first
+  end
+
   private
 
   def num_parse
