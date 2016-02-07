@@ -7,6 +7,7 @@
 require './lex'
 
 class Parser
+  attr_reader :ast_root
   def initialize(lex)
     parse(lex)
   end
